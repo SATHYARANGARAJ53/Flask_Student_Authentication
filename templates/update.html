@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>update Student</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header styling */
+        h1 {
+            color: blueviolet;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Form container styling */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* Table styling for form fields */
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-spacing: 10px 10px;
+        }
+
+        td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        /* Input field styling */
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            border-color: blueviolet;
+            outline: none;
+        }
+
+        /* Submit button styling */
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 >Update Student</h1>
+    <form method="post">
+        <table>
+            <tr><td>First Name  :</td>
+            <td><input type="text" name="first_name" value="{{students.first_name}}" required></td></tr>
+
+            <!-- name attribute provides a key-value pair where the name attribute is the key and the entered value is the value -->
+
+            <tr><td>Last Name  :</td>
+            <td><input type="text" name="last_name" value="{{students.last_name}}" required></td></tr>
+
+            <tr><td>Email  :</td>
+            <td><input type="text" name="email" value="{{students.email}}" required></td></tr>
+
+            <tr><td>Password  :</td>
+            <td><input type="text" name="password" value="{{students.password}}" required></td></tr>
+
+            <tr><td>Gender  :</td>
+            <td><input type="text" name="gender" value="{{students.gender}}" required></td></tr>
+
+            <tr><td><input type="submit" value="submit"></td></tr>
+            
+        </table>
+        
+        
+        
+    </form>
+</body>
+</html>

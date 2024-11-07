@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Page</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="static/login.css">
+</head>
+
+<body>
+    <h2>LOGIN PAGE</h2>
+    <form action="{{url_for('login')}}" method="POST">
+        <label>Email :</label>
+        <input type="text" name="email"><br>
+        <label>Password :</label>
+        <input type="text" name="password"><br>
+        <button>Login</button>
+        <br><br>
+        <a href="{{url_for('forgot_password')}}">Forget Password</a>
+        <button onclick="window.location.href='/'" style="text-decoration: none; color:white ; display: inline-block;">Back</button>
+        
+    </form>
+
+</body>
+
+</html>
