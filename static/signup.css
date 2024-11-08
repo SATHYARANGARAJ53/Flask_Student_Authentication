@@ -82,3 +82,21 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+.alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.alert li {
+    list-style: none;
+}
+
+
+.alert-danger {
+    background-color: #dc3545;
+    color: #fff;
+}

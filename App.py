@@ -15,6 +15,7 @@ db.init_app(app)  # initialise the database with flask app
 
 #create the database tables before the first request
 with app.app_context():
+    #db.drop_all()
     db.create_all() 
 
 
@@ -95,11 +96,11 @@ def login():
         students=StudentModel.query.filter_by(email=email).first() #Query for student with matching email.
 
         #Authenticate user by checking if password matches
-        if students and students.password == password:
+        if students and bcrypt.check_password_hash(students.password, password):
             
             return redirect('/main')
         else:
-            return 'Invalid email or password'
+            flash('Invalid email or password','danger')
     return render_template('login.html')
 
 
@@ -116,21 +117,20 @@ def signup():
         # Check if the email already exists in the database
         existing_user = StudentModel.query.filter_by(email=email).first()
         if existing_user:
-            return 'Email already exists. Please log in or use a different email.'
+            flash('Email already exists. Please log in or use a different email.','danger')
 
-        
+        hashed_password=bcrypt.generate_password_hash(password).decode('utf-8')
+
         new_student = StudentModel(
             first_name=first_name,
             last_name=last_name,
             email=email,
-            password=password,
+            password=hashed_password,
             gender=gender
         )
         db.session.add(new_student)
         db.session.commit()
-        
         return redirect('/login')  # Redirect to login page after successful signup
-
     return render_template('signup.html')
 
 #forgetpassword
@@ -152,7 +152,8 @@ def forgot_password():
             return redirect(url_for("forgot_password"))
 
         hashed_password=bcrypt.generate_password_hash(new_password).decode('utf-8')
-        StudentModel.password=hashed_password
+        student.password=hashed_password
+        db.session.flush()  # Ensures pending changes are flushed to the database
         db.session.commit()
 
         flash('Password changed succesfully','success')
